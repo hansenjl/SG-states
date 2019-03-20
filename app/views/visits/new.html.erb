@@ -1,0 +1,24 @@
+<h2>Record a Visit</h2>
+<% if @visit.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@visit.errors.count, "error") %>
+      prohibited you from saving:
+    </h2>
+
+    <ul>
+    <% @visit.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for @visit do |f| %>
+
+State: <%= f.collection_select( :state_id, State.all, :id, :name) %> <br><br>
+Rating out of 10: <%= f.number_field :rating, max:10 %> <br><br>
+
+<%= f.submit  %>
+<% end %>
