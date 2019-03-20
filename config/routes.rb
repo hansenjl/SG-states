@@ -7,9 +7,19 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
 
 
-  resources :states
+
   resources :comments
-  resources :users, only: [:create, :new, :show]
+
   resources :visits
+
+  resources :states do
+    resources :visits, shallow: true
+  end
+
+  resources :users, only: [:create, :new, :show] do
+    resources :visits, shallow: true
+  end
+
+
 
 end

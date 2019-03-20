@@ -1,7 +1,14 @@
-<h1>All Visits:</h1>
+<h1><%= visit_header(@visits.first) %></h1>
 
 <ul>
 <% @visits.each do |visit| %>
-  <li><%=visit.user.username%> visited <%=visit.state.name%> and gave it a rating of <%=visit.rating%></li>
+  <li>
+    <%=visit.user.username%> visited <%=visit.state.name%> and gave it a rating of <%=visit.rating%>
+
+    <%= link_to "View Visit", visit_path(visit.id)%>
+
+  </li>
 <% end %>
 </ul>
+
+

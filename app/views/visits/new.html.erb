@@ -15,9 +15,17 @@
 <% end %>
 
 
-<%= form_for @visit do |f| %>
+<%= form_for [@visit.state,@visit] do |f| %>
 
+<% if !params[:state_id] %>
 State: <%= f.collection_select( :state_id, State.order_alpha, :id, :name) %> <br><br>
+<% else %>
+
+Rate your visit to <%= @visit.state.name%> <br>
+
+<%end %>
+
+
 Rating out of 10: <%= f.number_field :rating, max:10, min:0 %> <br><br>
 
 <%= f.submit  %>
