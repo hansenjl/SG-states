@@ -17,6 +17,10 @@ class VisitsController < ApplicationController
     @visits = Visit.all
   end
 
+  def show
+    @visit = Visit.find_by_id(params[:id])
+  end
+
   private
   def visit_params
     params.require(:visit).permit(:state_id, :rating)

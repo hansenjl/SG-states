@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2019_03_20_024053) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "visit_id"
-    t.integer "text"
+    t.string "text"
   end
 
   create_table "states", force: :cascade do |t|

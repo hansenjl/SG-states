@@ -7,6 +7,6 @@ class State < ApplicationRecord
 
 
   def self.order_alpha
-    order("name desc")
+    order("name asc")
   end
 end
