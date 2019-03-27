@@ -1,23 +1,18 @@
 class VisitsController < ApplicationController
 
   def new
-    if params[:state_id]
-      @visit = current_user.visits.build(state_id: params[:state_id])
-    else
       @visit = current_user.visits.build
-    end
+      @visit.comments.build  #has_many
+      @visit.build_state   #belongs_to
   end
 
   def create
-    if params[:state_id]
-      @visit = current_user.visits.build(visit_params)
-      @visit.state_id = params[:state_id]
-    else
-      @visit = current_user.visits.build(visit_params)
-    end
+    @visit = current_user.visits.build
+    @visit.update(visit_params)
     if @visit.save
       redirect_to visits_path
     else
+      @visit.comments.build
       render 'visits/new'
     end
   end
@@ -39,6 +34,7 @@ class VisitsController < ApplicationController
 
   private
   def visit_params
-    params.require(:visit).permit(:state_id, :rating)
+    params.require(:visit).permit(:state_id, :rating, comments_attributes: [:text, :user_id], state_attributes: [:name] )
   end
 end
+

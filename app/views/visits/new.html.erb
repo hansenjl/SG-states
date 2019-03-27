@@ -6,12 +6,28 @@
 <%= form_for @visit do |f| %>
 
   Record a Visit for:
-    <%= f.collection_select(:state_id, State.order_alpha, :id, :name)%>
+    <%= f.collection_select(:state_id, State.order_alpha, :id, :name, )%>
+
+  Or add a new state if you don't find what you're looking for:
+    <%= f.fields_for :state do |state_field| %>
+      <%= state_field.text_field :name %>
+    <% end %>
+
 
   <br></br>
-  Rating out of 10: <%= f.number_field :rating, max:10, min:0 %> <br><br>
+  Rating out of 10: <%= f.number_field :rating, max:10, min:0 %>
+  <br><br>
 
 
+    <%= f.fields_for :comments do |comment_field| %>
+         Add a comment:
+       <%= comment_field.text_field :text %> <br><br>
+       <%= comment_field.hidden_field :user_id, value: current_user.id %>
+    <% end %>
 
   <%= f.submit  %>
 <% end %>
+
+
+
+
