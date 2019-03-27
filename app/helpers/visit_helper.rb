@@ -9,12 +9,12 @@ module VisitHelper
     end
   end
 
-  def state_select(visit)
-    if !params[:state_id]
-      collection_select(visit, :state_id, State.order_alpha, :id, :name)
-    else
-      visit.state.name
-    end
-  end
+  # def state_select(visit)
+  #   if !params[:state_id]
+  #     collection_select(visit, :state_id, State.order_alpha, :id, :name)
+  #   else
+  #     visit.state.name
+  #   end
+  # end
 
 end
