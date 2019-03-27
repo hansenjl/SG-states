@@ -17,16 +17,11 @@
 
 <%= form_for [@visit.state,@visit] do |f| %>
 
-<% if !params[:state_id] %>
-State: <%= f.collection_select( :state_id, State.order_alpha, :id, :name) %> <br><br>
-<% else %>
+  Record a Visit for:
+    <%= state_select(@visit)%>
 
-Rate your visit to <%= @visit.state.name%> <br>
+  <br></br>
+  Rating out of 10: <%= f.number_field :rating, max:10, min:0 %> <br><br>
 
-<%end %>
-
-
-Rating out of 10: <%= f.number_field :rating, max:10, min:0 %> <br><br>
-
-<%= f.submit  %>
+  <%= f.submit  %>
 <% end %>
