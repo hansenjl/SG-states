@@ -12,8 +12,7 @@ Rails.application.routes.draw do
 
   resources :visits
 
-  resources :states do
-
+  resources :states
 
   resources :users, only: [:create, :new, :show]
 
