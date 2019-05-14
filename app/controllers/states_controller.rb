@@ -1,4 +1,5 @@
 class StatesController < ApplicationController
+   before_action :if_not_logged_in, only: [:create, :new]
 
   def new
     @state = State.new

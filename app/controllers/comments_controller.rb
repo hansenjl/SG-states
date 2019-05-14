@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :if_not_logged_in
+
   def new
     @comment = current_user.comments.build
   end
