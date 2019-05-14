@@ -7,6 +7,8 @@
 
     <%= link_to "View Visit", visit_path(visit.id)%>
 
+    <%= link_to "Edit Visit", edit_visit_path(visit) if visit.user == current_user%>
+
   </li>
 <% end %>
 </ul>
