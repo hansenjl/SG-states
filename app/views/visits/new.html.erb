@@ -15,10 +15,10 @@
 <% end %>
 
 
-<%= form_for [@visit.state,@visit] do |f| %>
+<%= form_for @visit do |f| %>
 
   Record a Visit for:
-    <%= state_select(@visit)%>
+    <%= f.collection_select(visit, :state_id, State.order_alpha, :id, :name)%>
 
   <br></br>
   Rating out of 10: <%= f.number_field :rating, max:10, min:0 %> <br><br>
