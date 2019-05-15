@@ -12,9 +12,13 @@ Rails.application.routes.draw do
 
   resources :visits
 
-  resources :states
+  resources :states do
+    resources :visits, shallow: true
+  end
 
-  resources :users, only: [:create, :new, :show]
+  resources :users, only: [:create, :new, :show] do
+    resources :visits, only: [:index]
+  end
 
 
 
