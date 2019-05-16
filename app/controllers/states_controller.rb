@@ -15,7 +15,7 @@ class StatesController < ApplicationController
   end
 
   def index
-    @states = State.all
+    @states = State.all.order_alpha
   end
 
   def show

@@ -25,12 +25,12 @@ class VisitsController < ApplicationController
   def index
     # is it a nested route?
     if params[:state_id] && @state = State.find_by_id(params[:state_id])
-      @visits = @state.visits
+      @visits = @state.visits.highest_rated
       #@visits = Visit.where(state_id: params[:state_id])
     elsif params[:user_id] && @user = User.find_by_id(params[:user_id])
-      @visits = @user.visits
+      @visits = @user.visits.highest_rated
     else
-      @visits = Visit.all
+      @visits = Visit.rating_over(8).order_by_rating
     end
   end
 

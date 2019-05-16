@@ -5,8 +5,9 @@ class State < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  scope :order_alpha, -> {order("name asc")}
 
-  def self.order_alpha
-    order("name asc")
-  end
+  # def self.order_alpha
+  #   order("name asc")
+  # end
 end
