@@ -44,7 +44,7 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from:
-  'jennifer@flatironschool.com'}
+  'developerjenn@gmail.com'}
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -52,11 +52,11 @@ Rails.application.configure do
   'smtp.gmail.com',
   port:                 587,
   domain:
-  'flatironschool.com',
+  'gmail.com',
   user_name:
-  'jennifer@flatironschool.com',
+  'developerjenn@gmail.com',
   password:
-  'PeterPan13',
+  'Fl@tiron2019',
   authentication:
   'plain',
   enable_starttls_auto: true

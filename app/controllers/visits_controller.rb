@@ -16,7 +16,7 @@ class VisitsController < ApplicationController
   def create
     @visit = current_user.visits.build(visit_params)
     if @visit.save
-      email = UserMailer.log_visit(@visit).deliver_now
+      UserMailer.log_visit(@visit).deliver_now
       redirect_to visits_path
     else
       render 'visits/new'
