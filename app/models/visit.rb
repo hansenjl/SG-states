@@ -13,9 +13,9 @@ class Visit < ApplicationRecord
     average(:rating)
   end
 
-  rating integer
-  student_id
-  course_id
+  # rating integer
+  # student_id
+  # course_id
 
 
   #Show only visits with a rating over 7

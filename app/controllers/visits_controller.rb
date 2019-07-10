@@ -16,6 +16,7 @@ class VisitsController < ApplicationController
   def create
     @visit = current_user.visits.build(visit_params)
     if @visit.save
+      email = UserMailer.log_visit(@visit).deliver_now
       redirect_to visits_path
     else
       render 'visits/new'
@@ -30,7 +31,7 @@ class VisitsController < ApplicationController
     elsif params[:user_id] && @user = User.find_by_id(params[:user_id])
       @visits = @user.visits.highest_rated
     else
-      @visits = Visit.rating_over(8).order_by_rating
+      @visits = Visit.rating_over(3).order_by_rating
     end
   end
 
